@@ -8,6 +8,8 @@ import AppSpinner from "@/components/AppSpinner/AppSpinner.vue";
 const bookStore = useBooksStore();
 const { getUniqueBook, purchaseBook } = bookStore;
 onMounted(async () => {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
   await getUniqueBook(bookId);
 });
 const router = useRoute();
@@ -25,7 +27,7 @@ const handleBuy = async (id: number) => {
 <template>
   <AppSpinner v-if="isLoading" fullscreen />
   <div
-    class="flex p-10 h-full justify-center items-center flex-col md:flex-row"
+    class="flex p-10 h-full pt-24 justify-center items-center flex-col md:flex-row"
   >
     <div class="relative flex flex-col items-center">
       <img
@@ -36,11 +38,11 @@ const handleBuy = async (id: number) => {
       <p class="pt-2 text-center">ISBN: {{ book?.isbn }}</p>
     </div>
 
-    <div class="p-10 flex flex-col items-center">
-      <h1 class="text-5xl font-bold text-gray-700 text-center">
+    <div class="pt-4 flex flex-col items-center">
+      <h1 class="text-3xl md:text-5xl font-bold text-gray-700 text-center">
         {{ book?.title }}
       </h1>
-      <h2 class="text-2xl font-medium text-gray-700">
+      <h2 class="text-1xl md:text-2xl font-medium text-gray-700">
         Author: {{ book?.author }}
       </h2>
       <div class="pt-10">
