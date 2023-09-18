@@ -5,14 +5,13 @@ import { storeToRefs } from "pinia";
 import AppSpinner from "@/components/AppSpinner/AppSpinner.vue";
 import Carousel from "@/components/Carousel/Carousel.vue";
 import Rating from "@/components/Rating/Rating.vue";
-import SideMenu from "@/components/SideMenu/SideMenu.vue";
 
 const booksStore = useBooksStore();
 const { books, isLoading } = storeToRefs(booksStore);
 </script>
 
 <template>
-    <div class="flex justify-center flex-wrap p-4 relative">
+    <div class="flex justify-center flex-wrap p-4 relative pt-20">
       <Carousel />
       <AppSpinner v-if="isLoading" fullscreen />
 

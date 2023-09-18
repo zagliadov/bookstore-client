@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
+import Menu from "../SideMenu/Menu.vue";
 </script>
 
 <template>
-  <header class="flex justify-center bg-base-200">
+  <header
+    class="flex justify-center bg-base-200 shadow-lg fixed top-0 left-0 right-0 z-30"
+  >
     <div class="navbar w-10/12 bg-base-200">
       <div class="flex-1">
         <RouterLink to="/" class="btn btn-ghost normal-case text-xl">
@@ -44,7 +47,7 @@ import { RouterLink } from "vue-router";
             </div>
           </div>
         </div>
-        <div class="dropdown dropdown-end px-2">
+        <div class="dropdown dropdown-end px-2 hidden md:flex">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
               <img src="../../assets/avatar.jpeg" />
@@ -63,6 +66,31 @@ import { RouterLink } from "vue-router";
             <li><a>Settings</a></li>
             <li><a>Logout</a></li>
           </ul>
+        </div>
+        <div class="dropdown dropdown-end md:hidden">
+          <label tabindex="0" class="btn m-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </label>
+          <div
+            tabindex="0"
+            class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+          </div>
         </div>
       </div>
     </div>
