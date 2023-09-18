@@ -1,6 +1,9 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted, ref } from "vue";
-  import type { IElementClasses } from "@/types/util.types";
+
+
+
+  type IElementClasses = Record<string, boolean | undefined | null>;
 
   const props = defineProps<{
     to?: string;

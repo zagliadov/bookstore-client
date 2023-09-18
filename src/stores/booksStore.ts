@@ -6,7 +6,7 @@ import { API_URL } from "@/helpers/constants";
 
 export const useBooksStore = defineStore("books", () => {
   const books = ref<Book[]>([]);
-  const book = ref<Book>([]);
+  const book = ref<Book>();
   const isLoading = ref<boolean>(false);
 
   const getAllBooks = async () => {
@@ -20,7 +20,6 @@ export const useBooksStore = defineStore("books", () => {
   };
   const getUniqueBook = async (id: number) => {
     isLoading.value = true;
-    book.value = [];
     try {
       const response = await axios.get(`${API_URL}/books/${id}`);
       book.value = response?.data?.book;
