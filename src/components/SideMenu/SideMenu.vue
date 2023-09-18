@@ -7,7 +7,7 @@ import { menuItems } from "../../helpers/sideMenuItems";
     <li v-for="(item, index) in menuItems" :key="index">
       <a>{{ item.label }}</a>
       <template v-if="item.children">
-        <details :open="item.open">
+        <details :open="item?.open">
           <summary>{{ item.label }}</summary>
           <ul>
             <li v-for="(child, childIndex) in item.children" :key="childIndex">

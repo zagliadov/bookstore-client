@@ -13,7 +13,8 @@ onMounted(async () => {
 const router = useRoute();
 const bookId = Number(router.params.id);
 const { book, isLoading } = storeToRefs(bookStore);
-const isDisabled = ref<boolean>(book.value.availableStock === 0 && true);
+const saveValue = book?.value?.availableStock;
+const isDisabled = ref<boolean>(saveValue === 0 && true);
 const handleBuy = async (id: number) => {
   await purchaseBook(id);
 };
