@@ -16,7 +16,9 @@ const { book, isLoading } = storeToRefs(bookStore);
 const saveValue = book?.value?.availableStock;
 const isDisabled = ref<boolean>(saveValue === 0 && true);
 const handleBuy = async (id: number) => {
-  await purchaseBook(id);
+  if (id) {
+    await purchaseBook(id);
+  }
 };
 </script>
 
@@ -31,19 +33,19 @@ const handleBuy = async (id: number) => {
         alt="book"
         class="max-w-sm rounded-lg shadow-2xl"
       />
-      <p class="pt-2 text-center">ISBN: {{ book.isbn }}</p>
+      <p class="pt-2 text-center">ISBN: {{ book?.isbn }}</p>
     </div>
 
     <div class="p-10 flex flex-col items-center">
       <h1 class="text-5xl font-bold text-gray-700 text-center">
-        {{ book.title }}
+        {{ book?.title }}
       </h1>
       <h2 class="text-2xl font-medium text-gray-700">
-        Author: {{ book.author }}
+        Author: {{ book?.author }}
       </h2>
       <div class="pt-10">
         <span class="text-gray-700 underline"
-          >Available Stock: {{ book.availableStock }}</span
+          >Available Stock: {{ book?.availableStock }}</span
         >
       </div>
       <p class="py-6 text-gray-700">
@@ -53,11 +55,11 @@ const handleBuy = async (id: number) => {
       </p>
       <div class="flex flex-col md:flex-row">
         <span class="p-3 underline underline-offset-2 text-orange-600 text-xl"
-          >Price: ${{ book.price }}</span
+          >Price: ${{ book?.price }}</span
         >
         <button
           class="btn bg-orange-400"
-          @click="handleBuy(book.id)"
+          @click="handleBuy(bookId)"
           :disabled="isDisabled"
         >
           Buy a copy
