@@ -25,13 +25,13 @@ const handleBuy = async (id: number) => {
 <template>
   <AppSpinner v-if="isLoading" fullscreen />
   <div
-    class="flex p-10 h-screen justify-center items-center flex-col md:flex-row"
+    class="flex p-10 h-full justify-center items-center flex-col md:flex-row"
   >
     <div class="relative flex flex-col items-center">
       <img
         src="../assets/book.jpg"
         alt="book"
-        class="max-w-sm rounded-lg shadow-2xl"
+        class="max-w-full h-auto md:max-w-sm rounded-lg shadow-2xl"
       />
       <p class="pt-2 text-center">ISBN: {{ book?.isbn }}</p>
     </div>
