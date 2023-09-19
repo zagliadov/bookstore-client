@@ -11,7 +11,11 @@ export const useBooksStore = defineStore("books", () => {
 
   const getAllBooks = async () => {
     try {
-      const response = await axios.get(`${API_URL}/books`);
+      const response = await axios.get(`${API_URL}/books`, {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      });
       books.value = response?.data?.books;
     } catch (error) {
       console.log(error);
@@ -21,7 +25,11 @@ export const useBooksStore = defineStore("books", () => {
   const getUniqueBook = async (id: number) => {
     isLoading.value = true;
     try {
-      const response = await axios.get(`${API_URL}/books/${id}`);
+      const response = await axios.get(`${API_URL}/books/${id}`, {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      });
       book.value = response?.data?.book;
     } catch (error) {
       console.log(error);
@@ -33,7 +41,11 @@ export const useBooksStore = defineStore("books", () => {
 
   const purchaseBook = async (id: number) => {
     try {
-      const response = await axios.post(`${API_URL}/books/${id}/purchase`);
+      const response = await axios.post(`${API_URL}/books/${id}/purchase`, {
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
+      });
       if (response.status === 200) {
         console.log("Purchase successful:", response.data.book);
         book.value = response.data.book;
