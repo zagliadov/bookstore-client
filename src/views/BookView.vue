@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useBooksStore } from "@/stores/booksStore";
 import { storeToRefs } from "pinia";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import AppSpinner from "@/components/AppSpinner/AppSpinner.vue";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage.vue";
 
 const bookStore = useBooksStore();
 const { getUniqueBook, purchaseBook } = bookStore;
@@ -15,12 +16,8 @@ onMounted(async () => {
 const router = useRoute();
 const bookId = Number(router.params.id);
 const { book, isLoading } = storeToRefs(bookStore);
-const saveValue = book?.value?.availableStock;
-const isDisabled = ref<boolean>(saveValue === 0 && true);
 const handleBuy = async (id: number) => {
-  if (id) {
-    await purchaseBook(id);
-  }
+  await purchaseBook(id);
 };
 </script>
 
@@ -46,11 +43,11 @@ const handleBuy = async (id: number) => {
         Author: {{ book?.author }}
       </h2>
       <div class="pt-10">
-        <span class="text-gray-700 underline"
+        <span class="text-gray-700 underline text-xl"
           >Available Stock: {{ book?.availableStock }}</span
         >
       </div>
-      <p class="py-6 text-gray-700">
+      <p class="py-6 text-gray-700 text-xl">
         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
         id nisi.
@@ -59,14 +56,15 @@ const handleBuy = async (id: number) => {
         <span class="p-3 underline underline-offset-2 text-orange-600 text-xl"
           >Price: ${{ book?.price }}</span
         >
-        <button
-          class="btn bg-orange-400"
-          @click="handleBuy(bookId)"
-          :disabled="isDisabled"
-        >
-          Buy a copy
-        </button>
       </div>
+      <button
+        class="btn bg-orange-400"
+        @click="handleBuy(bookId)"
+        :disabled="book?.availableStock === 0"
+      >
+        <span class="text-xl">Buy a copy</span>
+      </button>
+      <ErrorMessage />
     </div>
   </div>
 </template>

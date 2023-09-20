@@ -11,35 +11,35 @@ const { books, isLoading } = storeToRefs(booksStore);
 </script>
 
 <template>
-    <div class="flex justify-center flex-wrap p-4 relative pt-20">
-      <Carousel />
-      <AppSpinner v-if="isLoading" fullscreen />
+  <div class="flex justify-center flex-wrap p-4 relative pt-20">
+    <Carousel />
+    <AppSpinner v-if="isLoading" fullscreen />
 
+    <div
+      v-for="{ id, title, author, isbn, price, availableStock } in books"
+      :key="id"
+      class="card w-80 bg-base-100 shadow-xl m-3 border pt-5"
+    >
       <div
-        v-for="{ id, title, author, isbn, price, availableStock } in books"
-        :key="id"
-        class="card w-80 bg-base-100 shadow-xl m-3 border pt-2"
-      >
-        <div
-          class="h-[200px] w-full bg-no-repeat bg-center bg-contain bg-[url('../assets/book.jpg')]"
-        ></div>
-        <Rating />
+        class="h-[200px] w-full bg-no-repeat bg-center bg-contain bg-[url('../assets/book.jpg')]"
+      ></div>
+      <Rating />
 
-        <div class="card-body">
-          <div className="flex items-center justify-between">
-            <h2 class="card-title text-gray-700">{{ title }}</h2>
-          </div>
-          <h3 class="text-gray-700">Author: {{ author }}</h3>
-          <span className="text-orange-600 text-2xl">${{ price }}</span>
-          <div class="flex items-center justify-between card-actions">
-            <span class="text-gray-700"
-              >Available stock: {{ availableStock }}</span
-            >
-            <RouterLink :to="`/book/${id}`" class="btn bg-orange-400">
-              <span>Buy Now</span>
-            </RouterLink>
-          </div>
+      <div class="card-body pb-4">
+        <div className="flex items-center justify-between">
+          <h2 class="card-title text-gray-700">{{ title }}</h2>
         </div>
+        <h3 class="text-gray-700 text-lg">Author: {{ author }}</h3>
+        <span className="text-orange-600 text-2xl">${{ price }}</span>
+        <div class="flex items-center justify-between card-actions">
+          <span class="text-gray-700 text-lg"
+            >Available stock: {{ availableStock }}</span
+          >
+        </div>
+        <RouterLink :to="`/book/${id}`" class="btn bg-orange-400">
+          <span>Buy Now</span>
+        </RouterLink>
       </div>
     </div>
+  </div>
 </template>

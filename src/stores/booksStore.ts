@@ -8,6 +8,7 @@ export const useBooksStore = defineStore("books", () => {
   const books = ref<Book[]>([]);
   const book = ref<Book>();
   const isLoading = ref<boolean>(false);
+  const errorMessage = ref<string | null>(null);
 
   const getAllBooks = async () => {
     try {
@@ -49,28 +50,34 @@ export const useBooksStore = defineStore("books", () => {
       if (response.status === 200) {
         console.log("Purchase successful:", response.data.book);
         book.value = response.data.book;
-      } else {
-        console.error("Unexpected status code:", response.status);
-        throw new Error("Error in purchasing a book");
+        errorMessage.value = null;
+      }
+      if (response.status === 500) {
+        errorMessage.value = "Network error";
       }
     } catch (error) {
+      console.error("Axios error:", error);
+      errorMessage.value = "Network error";
       if (axios.isAxiosError(error)) {
         console.error("Axios error:", error.message);
-        throw new Error("Network error");
+        errorMessage.value = "Network error";
       } else if (error instanceof Error) {
         console.error("Custom error:", error.message);
+        errorMessage.value = "Custom error";
         throw error;
       } else {
         console.error("Unknown error:", error);
-        throw new Error("Unknown error");
+        errorMessage.value = "Unknown error";
       }
     }
   };
+  
 
   return {
     books,
     book,
     isLoading,
+    errorMessage,
     getAllBooks,
     getUniqueBook,
     purchaseBook,

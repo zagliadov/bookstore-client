@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import Menu from "../SideMenu/Menu.vue";
 </script>
 
 <template>
   <header
     class="flex justify-center bg-base-200 shadow-lg fixed top-0 left-0 right-0 z-30"
   >
-    <div class="navbar w-10/12 bg-base-200">
+    <div class="navbar w-full sm:w-10/12 bg-base-200">
       <div class="flex-1">
         <RouterLink to="/" class="btn btn-ghost normal-case text-xl">
           Books
