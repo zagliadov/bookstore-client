@@ -1,7 +1,7 @@
 import { useBooksStore } from "@/stores/booksStore";
 import type { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
 
-export const getAllBooks = async (
+export const getAllBooksMiddleware = async (
   to: RouteLocationNormalized,
   from: RouteLocationNormalized,
   next: NavigationGuardNext
@@ -17,7 +17,7 @@ export const getAllBooks = async (
   }
 };
 
-export const getUniqueBook = async (
+export const getUniqueBookMiddleware = async (
   to: RouteLocationNormalized,
   from: RouteLocationNormalized,
   next: NavigationGuardNext

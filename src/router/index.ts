@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import BooksView from "../views/BooksView.vue";
 import BookView from "../views/BookView.vue";
-import { getAllBooks, getUniqueBook } from "./middleware/middleware";
+import { getAllBooksMiddleware, getUniqueBookMiddleware } from "./middleware/middleware";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,13 +10,13 @@ const router = createRouter({
       path: "/",
       name: "Books",
       component: BooksView,
-      beforeEnter: getAllBooks,
+      beforeEnter: getAllBooksMiddleware,
     },
     {
       path: "/book/:id",
       name: "Book",
       component: BookView,
-      beforeEnter: getUniqueBook,
+      beforeEnter: getUniqueBookMiddleware,
     },
   ],
 });
