@@ -29,7 +29,7 @@ const handleBuy = async (id: number) => {
   <div
     class="flex p-10 h-full pt-24 justify-start items-start flex-col md:flex-row"
   >
-    <div class="relative flex flex-col items-center">
+    <div class="relative flex flex-col items-center w-full">
       <img
         src="../assets/book.jpg"
         alt="book"

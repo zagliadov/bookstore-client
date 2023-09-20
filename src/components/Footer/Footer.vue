@@ -35,7 +35,7 @@
               class="input input-bordered w-full pr-16"
             />
             <button
-              class="btn btn-primary absolute top-0 right-0 rounded-l-none"
+              class="btn bg-orange-400 absolute top-0 right-0 rounded-l-none"
             >
               Subscribe
             </button>
