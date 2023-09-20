@@ -66,8 +66,8 @@ import { RouterLink } from "vue-router";
             <li><a>Logout</a></li>
           </ul>
         </div>
-        <div class="dropdown dropdown-end md:hidden">
-          <label tabindex="0" class="btn m-1">
+        <details class="dropdown dropdown-end md:hidden">
+          <summary class="m-1 btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -82,15 +82,15 @@ import { RouterLink } from "vue-router";
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>
-          </label>
-          <div
-            tabindex="0"
-            class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          </summary>
+          <ul
+            class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52"
           >
             <li><a>Item 1</a></li>
             <li><a>Item 2</a></li>
-          </div>
-        </div>
+          </ul>
+        </details>
+        
       </div>
     </div>
   </header>

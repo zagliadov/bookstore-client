@@ -47,23 +47,22 @@ export const useBooksStore = defineStore("books", () => {
           'ngrok-skip-browser-warning': 'true'
         }
       });
+  
       if (response.status === 200) {
         console.log("Purchase successful:", response.data.book);
         book.value = response.data.book;
         errorMessage.value = null;
-      }
-      if (response.status === 500) {
-        errorMessage.value = "Network error";
+      } else {
+        console.error("Unexpected status code:", response.status);
+        throw new Error("Error in purchasing a book");
       }
     } catch (error) {
-      console.error("Axios error:", error);
-      errorMessage.value = "Network error";
       if (axios.isAxiosError(error)) {
         console.error("Axios error:", error.message);
         errorMessage.value = "Network error";
       } else if (error instanceof Error) {
         console.error("Custom error:", error.message);
-        errorMessage.value = "Custom error";
+        errorMessage.value = error.message;
         throw error;
       } else {
         console.error("Unknown error:", error);
@@ -71,6 +70,7 @@ export const useBooksStore = defineStore("books", () => {
       }
     }
   };
+  
   
 
   return {
