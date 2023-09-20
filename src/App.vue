@@ -9,7 +9,7 @@ import Menu from "./components/SideMenu/Menu.vue";
 <template>
   <div class="flex flex-col h-screen">
     <Header />
-    <main className="grow relative">
+    <main className="grow relative py-10">
       <div class="flex justify-center">
         <SideMenu />
         <div class="w-10/12">
