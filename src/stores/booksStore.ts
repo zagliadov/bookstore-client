@@ -14,8 +14,8 @@ export const useBooksStore = defineStore("books", () => {
     try {
       const response = await axios.get(`${API_URL}/books`, {
         headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
+          "ngrok-skip-browser-warning": "true",
+        },
       });
       books.value = response?.data?.books;
     } catch (error) {
@@ -28,8 +28,8 @@ export const useBooksStore = defineStore("books", () => {
     try {
       const response = await axios.get(`${API_URL}/books/${id}`, {
         headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
+          "ngrok-skip-browser-warning": "true",
+        },
       });
       book.value = response?.data?.book;
     } catch (error) {
@@ -44,18 +44,16 @@ export const useBooksStore = defineStore("books", () => {
     try {
       const response = await axios.post(`${API_URL}/books/${id}/purchase`, {
         headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
+          "ngrok-skip-browser-warning": "true",
+        },
       });
-  
+
       if (response.status === 200) {
         console.log("Purchase successful:", response.data.book);
         book.value = response.data.book;
         errorMessage.value = null;
-      } else {
-        console.error("Unexpected status code:", response.status);
-        throw new Error("Error in purchasing a book");
       }
+      return errorMessage.value = "Error in purchasing a book";
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Axios error:", error.message);
@@ -70,8 +68,6 @@ export const useBooksStore = defineStore("books", () => {
       }
     }
   };
-  
-  
 
   return {
     books,

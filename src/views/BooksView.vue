@@ -35,9 +35,9 @@ const { books, isLoading } = storeToRefs(booksStore);
           <h3 class="text-gray-700 text-lg">Author: {{ author }}</h3>
           <span className="text-orange-600 text-2xl">${{ price }}</span>
           <div class="flex items-center justify-between card-actions">
-            <span class="text-gray-700 text-lg"
-              >Available stock: {{ availableStock }}</span
-            >
+            <span class="text-gray-700 text-lg">
+              Available stock: {{ availableStock }}
+            </span>
           </div>
         </div>
         <RouterLink :to="`/book/${id}`" class="btn bg-orange-400">

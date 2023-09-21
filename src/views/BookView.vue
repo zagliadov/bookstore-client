@@ -23,9 +23,7 @@ const handleBuy = async (id: number) => {
 
 <template>
   <AppSpinner v-if="isLoading" fullscreen />
-  <div
-    class="flex p-10 h-full pt-24 justify-start items-start flex-col md:flex-row"
-  >
+  <div class="flex p-10 h-full pt-24 justify-start items-start flex-col md:flex-row">
     <div class="relative flex flex-col items-center w-full">
       <img
         src="../assets/book.jpg"
@@ -43,9 +41,9 @@ const handleBuy = async (id: number) => {
         Author: {{ book?.author }}
       </h2>
       <div class="pt-10">
-        <span class="text-gray-700 underline text-xl"
-          >Available Stock: {{ book?.availableStock }}</span
-        >
+        <span class="text-gray-700 underline text-xl">
+          Available Stock: {{ book?.availableStock }}
+        </span>
       </div>
       <p class="py-6 text-gray-700 text-xl">
         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
@@ -53,9 +51,9 @@ const handleBuy = async (id: number) => {
         id nisi.
       </p>
       <div class="flex flex-col md:flex-row">
-        <span class="p-3 underline underline-offset-2 text-orange-600 text-xl"
-          >Price: ${{ book?.price }}</span
-        >
+        <span class="p-3 underline underline-offset-2 text-orange-600 text-xl">
+          Price: ${{ book?.price }}
+        </span>
       </div>
       <button
         class="btn bg-orange-400"
